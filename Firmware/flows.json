@@ -1,0 +1,415 @@
+[
+    {
+        "id": "ed5d8a784b945977",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "4ab7668455cb162f",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "91285ad3154c1d61",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "f5eb2f4678671c41",
+        "type": "ui-page",
+        "name": "Page 1",
+        "ui": "4ab7668455cb162f",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "91285ad3154c1d61",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": 0,
+                "cols": 3
+            },
+            {
+                "name": "Tablet",
+                "px": 576,
+                "cols": 6
+            },
+            {
+                "name": "Small Desktop",
+                "px": 768,
+                "cols": 9
+            },
+            {
+                "name": "Desktop",
+                "px": 1024,
+                "cols": 12
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "09d3ec757fe83fd2",
+        "type": "ui-group",
+        "name": "Group 1",
+        "page": "f5eb2f4678671c41",
+        "width": 6,
+        "height": "8",
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "c363559da59ea943",
+        "type": "mqtt-broker",
+        "name": "Mosquitto Local",
+        "broker": "127.0.0.1",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "d4ee1dac1ca1639b",
+        "type": "change",
+        "z": "ed5d8a784b945977",
+        "name": "Extraer Vibración",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.vibracion",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 220,
+        "wires": [
+            [
+                "0cb04f9da1082b83"
+            ]
+        ]
+    },
+    {
+        "id": "c2f4a46b13278bb9",
+        "type": "change",
+        "z": "ed5d8a784b945977",
+        "name": "Extraer corriente",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "corriente",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8a0df32bd1939a55",
+        "type": "change",
+        "z": "ed5d8a784b945977",
+        "name": "Extraer temperatura",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.temperatura",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 320,
+        "wires": [
+            [
+                "b6d6ceb236c48a35"
+            ]
+        ]
+    },
+    {
+        "id": "0cb04f9da1082b83",
+        "type": "ui-chart",
+        "z": "ed5d8a784b945977",
+        "group": "09d3ec757fe83fd2",
+        "name": "",
+        "label": "chart",
+        "order": 2,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "",
+        "ymax": "",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": "5",
+        "removeOlderUnit": "60",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 6,
+        "height": 8,
+        "className": "",
+        "interpolation": "linear",
+        "x": 830,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b6d6ceb236c48a35",
+        "type": "ui-gauge",
+        "z": "ed5d8a784b945977",
+        "name": "",
+        "group": "09d3ec757fe83fd2",
+        "order": 1,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "gauge",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "units",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "4",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "7",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": "10",
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 830,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4e367a0fa85612d9",
+        "type": "mqtt in",
+        "z": "ed5d8a784b945977",
+        "name": "",
+        "topic": "motores/induccion/datos",
+        "qos": "2",
+        "datatype": "utf8",
+        "broker": "c363559da59ea943",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 320,
+        "wires": [
+            [
+                "c8b26c9f5a164e95"
+            ]
+        ]
+    },
+    {
+        "id": "c8b26c9f5a164e95",
+        "type": "json",
+        "z": "ed5d8a784b945977",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 330,
+        "y": 320,
+        "wires": [
+            [
+                "d4ee1dac1ca1639b",
+                "8a0df32bd1939a55",
+                "c2f4a46b13278bb9"
+            ]
+        ]
+    },
+    {
+        "id": "36b2902d1ee27b59",
+        "type": "mqtt out",
+        "z": "ed5d8a784b945977",
+        "name": "",
+        "topic": "motores/induccion/datos",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "c363559da59ea943",
+        "x": 1210,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "e75748c1f9b687f5",
+        "type": "inject",
+        "z": "ed5d8a784b945977",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"motor_id\":\"Induccion_01\",\"vibracion\":0.45,\"corriente\":4.2,\"temperatura\":58.3}",
+        "payloadType": "json",
+        "x": 910,
+        "y": 120,
+        "wires": [
+            [
+                "36b2902d1ee27b59"
+            ]
+        ]
+    },
+    {
+        "id": "f0b7f098e44264a3",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "@flowfuse/node-red-dashboard": "1.30.2"
+        }
+    }
+]
