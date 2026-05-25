@@ -1,3 +1,5 @@
 _**ESP32**_
 The following code uses libraries such as Dallas temperature, OneWire and sensor to read the entry signals from the MPU6050 and the DS1115. The first prototype was built on Wokwi for ESP32 simulation. The absent of the SCT current sensor on the Wokwi's interface force me to mock the current signals until future improvements.
 *El siguiente codigo usa la librerias de Dallas temperature, One Wire y sensor para leer señales de entrada del MPU6050 y el sensor de temperatura. El primer prototipo fue construido en Wokwi para simulacion de ESP32. La ausencia de este sensor en la interfaz de Wokwi me  llevó a recrear las señales de corriente hasta proxima iteraciones*
+
+![Dashboard en Tiempo Real](Node-red.png)
